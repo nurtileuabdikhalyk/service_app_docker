@@ -31,7 +31,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'clients',
     'services',
-
+    # 'cachalot',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -134,3 +134,12 @@ LOGGING = {
     }
 }
 CELERY_BROKER_URL = 'redis://redis:6379/0'
+CACHES = {
+    'default': {
+        'BACKEND': 'django_redis.cache.RedisCache',
+        'LOCATION': 'redis://redis:6379/1',
+
+    }
+}
+
+PRICE_CACHE_NAME = 'price_cache'
